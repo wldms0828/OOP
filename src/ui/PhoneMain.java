@@ -12,9 +12,7 @@ public class PhoneMain {
 
 	public static void main(String[] args) {
 		Phone phone = null;
-		CellPhone cp =null;
-		IPhone ip = null;
-		GalaxyPhone gp = null;
+		/*상속 구조에서의 다형성*/
 		But[] buttons = { 
 				But.EXIT, 
 				But.TELEPHONE,
@@ -43,28 +41,28 @@ public class PhoneMain {
 				JOptionPane.showMessageDialog(null, phone.toString());
 				break;
 			case CELLPHONE : 
-				cp = new CellPhone();
-				cp.setName(JOptionPane.showInputDialog("name"));
-				cp.setPhoneNum(JOptionPane.showInputDialog("phoneNum"));
-				cp.setCall(JOptionPane.showInputDialog("call"));
+				phone = new CellPhone();
+				phone.setName(JOptionPane.showInputDialog("name"));
+				phone.setPhoneNum(JOptionPane.showInputDialog("phoneNum"));
+				phone.setCall(JOptionPane.showInputDialog("call"));
 				
-				JOptionPane.showMessageDialog(null, cp.toString());
+				JOptionPane.showMessageDialog(null, phone.toString());
 				break;
 			case IPHONE : 
-				ip = new IPhone();
-				ip.setName(JOptionPane.showInputDialog("name"));
-				ip.setPhoneNum(JOptionPane.showInputDialog("phoneNum"));
-				ip.setData(JOptionPane.showInputDialog("data"));
+				phone = new IPhone();
+				phone.setName(JOptionPane.showInputDialog("name"));
+				phone.setPhoneNum(JOptionPane.showInputDialog("phoneNum"));
+				((IPhone) phone).setData(JOptionPane.showInputDialog("data"));
 				
-				JOptionPane.showMessageDialog(null, ip.toString());
+				JOptionPane.showMessageDialog(null, phone.toString());
 				break;
 			case GALAXYPHONE  :
-				gp = new GalaxyPhone();
-				gp.setName(JOptionPane.showInputDialog("name"));
-				gp.setPhoneNum(JOptionPane.showInputDialog("phoneNum"));
-				gp.setData(JOptionPane.showInputDialog("data"));
-				gp.setSize();
-				JOptionPane.showMessageDialog(null, gp.toString());
+				phone = new GalaxyPhone();
+				phone.setName(JOptionPane.showInputDialog("name"));
+				phone.setPhoneNum(JOptionPane.showInputDialog("phoneNum"));
+				((IPhone) phone).setData(JOptionPane.showInputDialog("data"));
+				((GalaxyPhone) phone).setSize();
+				JOptionPane.showMessageDialog(null, phone.toString());
 				
 			default : break;
 			

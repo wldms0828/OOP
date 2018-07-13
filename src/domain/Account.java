@@ -1,5 +1,6 @@
 package domain;
-import java.util.Calendar;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 public class Account {
 	public final static String BANK_NAME="비트뱅크";
 	public final static String ACCOUNT_TYPE="기본통장";
@@ -10,23 +11,23 @@ public class Account {
 	protected int money;
 	protected String name,uid,password,accountType,
 					 createDate,accountNo;
-	public String toString() {
-		return String.format(
-				" %s\n %s\n 계좌번호 : %s\n 이름 : %s\n 생성일 : %s\n 잔액 : %d\n",
-				BANK_NAME,ACCOUNT_TYPE,accountNo,name,createDate,money);
-	}
+
 	// 통장 123-345-678 의 형태가 되도록 코딩
 	//createDate 오늘 날짜 뽑는 로직 가져다 쓰세요.
 	//money 잔액,uid 인터넷뱅킹 용 아이디,accountType
+	public Account(String name, String uid,String password) {
+		setAccountType();
+		setAccountNo();
+		setCreateDate();
+		this.name=name;
+		this.uid=uid;
+		this.password=password;
+	}
+	//입금, 출금
 	public void setMoney(int money) {
 		this.money=money;
 	}
-	public void setName(String name) {
-		this.name=name;
-	}
-	public void setUid(String uid) {
-		this.uid=uid;
-	}
+	
 	public void setPassword(String password) {
 		this.password=password;
 	}
@@ -34,21 +35,19 @@ public class Account {
 		this.accountType=ACCOUNT_TYPE;
 	}
 	public void setCreateDate() {
-		Calendar today = Calendar.getInstance();
-		createDate = String.valueOf(today.get(Calendar.YEAR)) + "년" + String.valueOf(today.get(Calendar.MONTH)+1) + "월" + 
-					String.valueOf(today.get(Calendar.DATE)) + "일" ;
-		
-				}
+		this.createDate = new SimpleDateFormat("yyyy년  MM월 dd일").format(new Date());
+		}
+
 	public void setAccountNo() {
 		accountNo = "";
 		for(int i = 0;i<2;i++) {
-			accountNo += String.valueOf(((int)(Math.random()*900)+100)) + "-"  ;
+			accountNo += String.format("%03d", (int)(Math.random()*999)) + "-"  ;
 			if(i==1) {
-				accountNo += String.valueOf(((int)(Math.random()*900)+100));
+			accountNo += String.format("%03d", (int)(Math.random()*999));
 			}
 		}
 	}
-	public int getMoney(int money) {
+	public int getMoney() {
 		return money;
 	}
 	public String getName() {
@@ -69,6 +68,10 @@ public class Account {
 	public String getAccountNo() {
 		return accountNo;
 	}
-	
+	public String toString() {
+		return String.format(
+				" %s\n %s\n 계좌번호 : %s\n 이름 : %s\n 생성일 : %s\n 잔액 : %d\n",
+				BANK_NAME,ACCOUNT_TYPE,accountNo,name,createDate,money);
+	}
 	
 }

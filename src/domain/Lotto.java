@@ -7,23 +7,28 @@ public class Lotto {
 	int b1,b2,b3,b4,b5,b6,money;
 	String result;
 	public void setB1(int b1) {
-		result = String.valueOf(Math.random()*10);
-		for(int i = 0;i<1;i++) {
-			
-		}
+		b1 = (int)Math.random()*10;
 	}
 	public void setB2(int b2) {
+		b2 = (int)Math.random()*10;
 	}
 	public void setB3(int b3) {
+		b3 = (int)Math.random()*10;
 	}
 	public void setB4(int b4) {
+		b4 = (int)Math.random()*10;
 	}
 	public void setB5(int b5) {
+		b5 = (int)Math.random()*10;
 	}
 	public void setB6(int b6) {
+		b6 = (int)Math.random()*10;
 	}
 	public void setMoney(int money) {
 		this.money=money/1000;
+		for(int i = 0;i<money;i++) {
+			result = String.valueOf(b1);
+		}
 	}
 	public int b1() {
 		return b1;
@@ -44,6 +49,6 @@ public class Lotto {
 		return b6;
 	}
 	public String toString() {
-		return String.format("%d | %d | %d | %d | %d | %d, b1,b2,b3,b4,b5,b6");
+		return result;
 	}
 }

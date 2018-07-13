@@ -21,9 +21,11 @@ public class Main {
 		Salary salary = null;
 		Salary[]arr3 = new Salary[5];
 		Lotto lotto = null;
+		Lotto[] arr4 = new Lotto[6];
 		int count =0;
 		int gcount = 0;
 		int scount = 0;
+		int lcount = 0;
 		while(true) {
 			int menu = Integer.parseInt(JOptionPane.showInputDialog(
 					"메뉴를 골라주세요.\n"
@@ -98,10 +100,8 @@ public class Main {
 				case 7 : 
 					lotto = new Lotto();
 					lotto.setMoney(Integer.parseInt(JOptionPane.showInputDialog("money")));
-					
-					JOptionPane.showMessageDialog(null, "b1 b2 b3 b4 b5 b6");
-					
-					break;
+					JOptionPane.showMessageDialog(null, lotto.toString());
+				
 				
 				default : return;
 			}
